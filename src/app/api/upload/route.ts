@@ -1,7 +1,5 @@
-
 import { NextResponse } from "next/server";
-import path from "path";
-import { writeFile } from "fs/promises";
+import cloudinary from "@/lib/cloudinary";
 
 export async function POST(request: Request) {
     try {
@@ -12,19 +10,28 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "No file received." }, { status: 400 });
         }
 
-        const buffer = Buffer.from(await file.arrayBuffer());
-        const filename = Date.now() + "_" + file.name.replaceAll(" ", "_");
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
 
-        // Save to public/uploads
-        const uploadDir = path.join(process.cwd(), "public/uploads");
-        const filePath = path.join(uploadDir, filename);
+        const uploadResult = await new Promise((resolve, reject) => {
+            cloudinary.uploader.upload_stream(
+                {
+                    folder: "bento-ai", // Optional: Organize in a folder
+                },
+                (error, result) => {
+                    if (error) {
+                        reject(error);
+                        return;
+                    }
+                    resolve(result);
+                }
+            ).end(buffer);
+        });
 
-        await writeFile(filePath, buffer);
-
-        // Return the public URL
-        const fileUrl = `/uploads/${filename}`;
-
-        return NextResponse.json({ url: fileUrl, success: true });
+        return NextResponse.json({
+            url: (uploadResult as any).secure_url,
+            success: true
+        });
 
     } catch (error) {
         console.error("Upload failed:", error);
