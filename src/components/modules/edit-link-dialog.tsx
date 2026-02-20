@@ -63,10 +63,8 @@ export function EditLinkDialog({ tile, open, onOpenChange }: EditLinkDialogProps
             }
         }
 
-        if (debouncedUrl !== content.url) {
-            fetchPreview()
-        }
-    }, [debouncedUrl, content.url]) // Added dependencies
+        fetchPreview()
+    }, [debouncedUrl]) // Removed content.url guard so it also runs on first load
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
