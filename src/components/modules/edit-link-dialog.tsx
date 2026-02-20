@@ -57,8 +57,7 @@ export function EditLinkDialog({ tile, open, onOpenChange }: EditLinkDialogProps
                 const data = await res.json()
 
                 if (data.image) setPreviewImage(data.image)
-                if (data.title) setLabel(data.title)
-                if (data.description) setDescription(data.description)
+                if (data.title) setDescription(data.title)
             } catch (error) {
                 console.error("Failed to fetch preview:", error)
             } finally {
