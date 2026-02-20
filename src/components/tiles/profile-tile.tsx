@@ -56,8 +56,8 @@ export function ProfileTile({ content, tile }: { content: any, tile?: Tile }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-1 truncate w-full px-4" title={content.name || "Your Name"}>{content.name || "Your Name"}</h2>
             <p className="text-sm md:text-base font-medium text-zinc-500 dark:text-zinc-400 mb-3 uppercase tracking-wide truncate w-full px-4">{content.role || "Creator"}</p>
 
-            <div className="max-w-[320px] space-y-4">
-                <p className="text-base md:text-lg text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed text-left">
+            <div className="max-w-xs sm:max-w-sm space-y-4">
+                <p className="text-base md:text-lg text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed text-center" style={{ textWrap: 'pretty' }}>
                     {content.bio || "Digital Creator & Product Designer based in NYC."}
                 </p>
 
