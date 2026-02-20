@@ -169,13 +169,13 @@ export function SocialTile({ content, tile }: { content: any, tile?: Tile }) {
                 {/* Username */}
                 <div className="w-full px-1" style={{ containerType: 'inline-size' }}>
                     <h3
-                        className="font-semibold w-full text-center leading-tight whitespace-nowrap"
+                        className="font-semibold w-full text-center leading-tight break-all"
                         title={`@${handle}`}
-                        style={{ fontSize: 'clamp(0.75rem, 12cqw, 1.125rem)' }}
+                        style={{ fontSize: 'clamp(0.65rem, 10cqw, 1.125rem)' }}
                     >
                         @{handle}
                     </h3>
-                    <p className="text-xs md:text-sm text-muted-foreground truncate w-full">
+                    <p className="text-xs text-muted-foreground truncate w-full mt-0.5">
                         {platform.label}
                     </p>
                 </div>
