@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -31,6 +31,7 @@ export function EditLinkDialog({ tile, open, onOpenChange }: EditLinkDialogProps
     const [url, setUrl] = useState(content.url || "")
     const [previewImage, setPreviewImage] = useState(content.previewImage || "")
     const [isLoadingPreview, setIsLoadingPreview] = useState(false)
+    const [fetchKey, setFetchKey] = useState(0)
 
     const debouncedUrl = useDebounce(url, 500)
 
@@ -40,10 +41,12 @@ export function EditLinkDialog({ tile, open, onOpenChange }: EditLinkDialogProps
             setDescription(content.description || "")
             setUrl(content.url || "")
             setPreviewImage(content.previewImage || "")
+            // Increment fetchKey to force fetch to re-run after reset
+            setFetchKey(k => k + 1)
         }
     }, [open, content])
 
-    // Auto-fetch preview when debounced URL changes
+    // Auto-fetch preview when debounced URL changes or dialog opens
     useEffect(() => {
         const fetchPreview = async () => {
             if (!debouncedUrl || !debouncedUrl.startsWith("http")) return
@@ -64,7 +67,7 @@ export function EditLinkDialog({ tile, open, onOpenChange }: EditLinkDialogProps
         }
 
         fetchPreview()
-    }, [debouncedUrl]) // Removed content.url guard so it also runs on first load
+    }, [debouncedUrl, fetchKey])
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
