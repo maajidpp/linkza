@@ -10,7 +10,7 @@ export default function Home() {
     <div className="min-h-screen bg-background font-sans flex flex-col">
       <header className="p-8 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Pathayam</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Linkza</h1>
         </div>
         <div className="flex gap-4 items-center">
           <Link href="/login">
@@ -97,7 +97,7 @@ function UsernameForm() {
       <div className="flex flex-col sm:flex-row gap-2">
         <div className="relative flex-1">
           <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted-foreground">
-            pathayam.com/
+            linkza.pro/
           </div>
           <input
             name="username"

@@ -17,7 +17,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "Pathayam",
+  title: "Linkza",
   description: "A modular, grid-based Bento dashboard.",
 };
 

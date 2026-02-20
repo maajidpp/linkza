@@ -14,7 +14,7 @@ export function DashboardHeader({ user }: { user: any }) {
     return (
         <header className="mb-8 flex items-center justify-between">
             <div>
-                <h1 className="text-3xl font-bold tracking-tight">Pathayam</h1>
+                <h1 className="text-3xl font-bold tracking-tight">Linkza</h1>
                 <p className="text-muted-foreground">Welcome back, {user?.name || "User"}.</p>
             </div>
             <div className="flex items-center gap-4">
