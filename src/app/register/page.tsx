@@ -19,6 +19,11 @@ function RegisterFormContent() {
     const [username, setUsername] = useState(searchParams.get("username") || "")
     const [usernameAvailable, setUsernameAvailable] = useState<boolean | null>(null)
     const [validatingUsername, setValidatingUsername] = useState(false)
+    const [origin, setOrigin] = useState("")
+
+    useEffect(() => {
+        setOrigin(window.location.origin)
+    }, [])
 
     useEffect(() => {
         const checkUsername = async () => {
@@ -122,9 +127,10 @@ function RegisterFormContent() {
                                     usernameAvailable === false && "border-red-500 focus-visible:ring-red-500"
                                 )}
                             />
+
                             {username && (
                                 <p className="text-xs text-muted-foreground mt-1">
-                                    Your profile URL: <span className="font-mono text-primary">http://localhost:3000/{username}</span>
+                                    Your profile URL: <span className="font-mono text-primary">{origin}/{username}</span>
                                 </p>
                             )}
                             {username.length >= 3 && !validatingUsername && (
