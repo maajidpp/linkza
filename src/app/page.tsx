@@ -47,6 +47,10 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      <footer className="w-full py-6 text-center text-sm text-muted-foreground">
+        © 2026 Linkza by Maajid. All rights reserved.
+      </footer>
     </div>
   )
 }
@@ -102,8 +106,8 @@ function UsernameForm() {
             value={username}
             onChange={(e) => setUsername(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
             className={`flex h-12 w-full rounded-md border bg-background pl-32 pr-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${usernameAvailable === true ? "border-green-500 focus-visible:ring-green-500" :
-                usernameAvailable === false ? "border-red-500 focus-visible:ring-red-500" :
-                  "border-input"
+              usernameAvailable === false ? "border-red-500 focus-visible:ring-red-500" :
+                "border-input"
               }`}
             autoComplete="off"
           />

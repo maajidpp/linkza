@@ -24,6 +24,9 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
             <main className="mx-auto max-w-[1400px]">
                 <PublicGridWrapper username={username} />
             </main>
+            <footer className="w-full py-6 text-center text-sm text-muted-foreground mt-8">
+                © 2026 Linkza by Maajid. All rights reserved.
+            </footer>
         </div>
     )
 }
