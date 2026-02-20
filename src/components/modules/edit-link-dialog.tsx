@@ -53,9 +53,9 @@ export function EditLinkDialog({ tile, open, onOpenChange }: EditLinkDialogProps
                 const res = await fetch(`/api/link-preview?url=${encodeURIComponent(debouncedUrl)}`)
                 const data = await res.json()
 
-                if (data.image && !previewImage) setPreviewImage(data.image)
-                if (data.title && !label) setLabel(data.title)
-                if (data.description && !description) setDescription(data.description)
+                if (data.image) setPreviewImage(data.image)
+                if (data.title) setLabel(data.title)
+                if (data.description) setDescription(data.description)
             } catch (error) {
                 console.error("Failed to fetch preview:", error)
             } finally {
